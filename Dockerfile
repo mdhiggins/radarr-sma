@@ -1,46 +1,21 @@
-FROM linuxserver/radarr
-MAINTAINER mdhiggins <mdhiggins23@gmail.com>
+FROM mdhiggins/radarr-sma
+MAINTAINER StevenChorkley
 
-# get python3 and git, and install python libraries
+# set environment variables
+ENV GOROOT /usr/local/bin/golang
+ENV GOPATH $HOME/go
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
+ENV RCLONE_VERSION=current
+
+# install go
 RUN \
-  apt-get update && \
-  apt-get install -y \
-    git \
-    wget \
-    python3 \
-    python3-pip && \
+  wget https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz -O /tmp/go.tar.gz && \
+  tar -xvf /tmp/go.tar.gz -C /tmp/ && mv /tmp/go /usr/local/bin/golang/ && \
 
-# install pip, venv, and set up a virtual self contained python environment
-  python3 -m pip install --user --upgrade pip && \
-  python3 -m pip install --user virtualenv && \
-  mkdir /usr/local/bin/sma && \
-  python3 -m virtualenv /usr/local/bin/sma/env && \
-  /usr/local/bin/sma/env/bin/pip install requests \
-    requests[security] \
-    requests-cache \
-    babelfish \
-    'guessit<2' \
-    'subliminal<2' \
-    'stevedore==1.19.1' \
-    python-dateutil \
-    qtfaststart && \
-
-# download repo
-  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /usr/local/bin/sma/sickbeard_mp4_automator && \
-
-# create logging directory
-  mkdir /var/log/sickbeard_mp4_automator && \
-  touch /var/log/sickbeard_mp4_automator/index.log && \
-  chgrp -R users /var/log/sickbeard_mp4_automator && \
-  chmod -R g+w /var/log/sickbeard_mp4_automator && \
-
-# ffmpeg
-  wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz -O /tmp/ffmpeg.tar.xz && \
-  mkdir /usr/local/bin/ffmpeg && \
-  tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin/ffmpeg --strip-components 1 && \
-  chgrp -R users /usr/local/bin/ffmpeg && \
-  chmod g+x /usr/local/bin/ffmpeg/ffmpeg && \
-  chmod g+x /usr/local/bin/ffmpeg/ffprobe && \
+# install rclone
+  wget https://downloads.rclone.org/rclone-current-linux-amd64.zip -O /tmp/rclone.zip && \
+  unzip /tmp/rclone.zip -d /tmp && \
+  mv /tmp/rclone-*-linux-amd64/rclone /usr/local/bin && \
 
 # cleanup
   rm -rf \
