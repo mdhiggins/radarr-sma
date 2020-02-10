@@ -49,4 +49,3 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-CMD git -C /usr/local/bin/sma/sickbeard_mp4_automator pull origin master
