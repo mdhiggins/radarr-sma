@@ -1,9 +1,6 @@
 FROM linuxserver/radarr
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
-# Variables
-ENV FFMPEG=/usr/local/bin/ffmpeg
-ENV FFPROBE=/usrlocal/bin/ffprobe
 # get python3 and git, and install python libraries
 RUN \
   apt-get update && \
@@ -50,4 +47,10 @@ RUN \
     /var/tmp/*
 
 EXPOSE 7878
-VOLUME ["/usr/local/bin/sma/sickbeard_mp4_automator/autoProcess.ini"]
+
+VOLUME /config
+VOLUME /usr/local/bin/sma/sickbeard_mp4_automator/autoProcess.ini
+
+# update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
+ADD update.py /usr/local/bin/sma/update.py
+RUN /usr/local/bin/sma/env/bin/python3 /usr/local/bin/sma/update.py
