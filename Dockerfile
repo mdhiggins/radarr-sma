@@ -41,6 +41,8 @@ RUN \
   chmod g+x /usr/local/bin/ffmpeg && \
   chmod g+x /usr/local/bin/ffprobe && \
 # cleanup
+  apt-get purge --auto-remove -y && \
+  apt-get clean && \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
