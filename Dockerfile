@@ -1,6 +1,7 @@
 ARG ffmpeg_tag=4.2-ubuntu
+ARG radarr_tag=latest
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
-FROM linuxserver/radarr
+FROM linuxserver/radarr:${radarr_tag}
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 # Add files from ffmpeg
