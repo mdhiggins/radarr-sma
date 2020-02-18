@@ -1,4 +1,4 @@
-FROM linuxserver/radarr
+FROM linuxserver/radarr:preview
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMAPATH /usr/local/sma
