@@ -27,7 +27,10 @@ def main():
     ssl = root.find("EnableSsl").text
     ssl = ssl.lower() in ["true", "yes", "t", "1", "y"] if ssl else False
     apikey = root.find("ApiKey").text
-    section = "Radarr"
+    section = os.environ.get("SMARS")
+    if not section:
+        print("No Sonarr/Radarr specifying ENV variable")
+        return
 
     safeConfigParser = configparser.SafeConfigParser()
     safeConfigParser.read(autoProcess)
@@ -52,7 +55,6 @@ def main():
     fp = open(autoProcess, "w")
     safeConfigParser.write(fp)
     fp.close()
-    print("autoProcess.ini updated with API key for %s" % section)
 
 
 if __name__ == '__main__':

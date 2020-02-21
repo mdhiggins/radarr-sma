@@ -8,6 +8,7 @@ LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV SMAPATH /usr/local/sma
+ENV SMARS Radarr
 
 # get python3 and git, and install python libraries
 RUN \
@@ -69,4 +70,5 @@ VOLUME /config
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
 ADD update.py ${SMAPATH}/update.py
+ADD postRadarr.sh ${SMAPATH}/postRadarr.sh
 ADD sma-config /etc/cont-init.d/98-sma-config
