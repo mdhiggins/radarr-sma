@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import configparser
 import xml.etree.ElementTree as ET
 
@@ -12,11 +13,11 @@ autoProcess = os.path.join(autoProcess, "autoProcess.ini")
 def main():
     if not os.path.isfile(xml):
         print("No Sonarr/Radarr config file found")
-        return
+        sys.exit(1)
 
     if not os.path.isfile(autoProcess):
         print("autoProcess.ini does not exist")
-        return
+        sys.exit(1)
 
     tree = ET.parse(xml)
     root = tree.getroot()
@@ -30,7 +31,7 @@ def main():
     section = os.environ.get("SMARS")
     if not section:
         print("No Sonarr/Radarr specifying ENV variable")
-        return
+        sys.exit(1)
 
     safeConfigParser = configparser.SafeConfigParser()
     safeConfigParser.read(autoProcess)
