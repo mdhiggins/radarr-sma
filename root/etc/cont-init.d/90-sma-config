@@ -5,6 +5,6 @@ chown -R abc:abc ${SMAPATH}
 chmod -R 775 ${SMAPATH}/*.sh
 
 # update autoprocess
-${SMAPATH}/env/bin/python3 ${SMAPATH}/update.py
+${SMAPATH}/venv/bin/python3 ${SMAPATH}/update.py
 
 exit $?
