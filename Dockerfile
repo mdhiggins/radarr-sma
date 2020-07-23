@@ -1,8 +1,8 @@
-ARG ffmpeg_tag=4.2-ubuntu
+ARG ffmpeg_tag=snapshot-vaapi
 ARG radarr_tag=latest
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM linuxserver/radarr:${radarr_tag}
-LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
+LABEL maintainer="eikowagenknecht <eiko.wagenknecht@web.de>"
 
 # Add files from ffmpeg
 COPY --from=ffmpeg /usr/local/ /usr/local/
