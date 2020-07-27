@@ -53,6 +53,7 @@ EXPOSE 7878
 
 VOLUME /config
 VOLUME /usr/local/sma/config
+VOLUME /blackhole
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
 COPY extras/ ${SMA_PATH}/
