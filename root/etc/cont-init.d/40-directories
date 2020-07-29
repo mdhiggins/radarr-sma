@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# make folders
+mkdir -p \
+	/blackhole
+
+# permissions
+chown abc:abc \
+	/blackhole
+
