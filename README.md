@@ -16,7 +16,7 @@ As of 3/9/2020 the containers were overhauled and the location of the script was
 
 ### docker-compose
 ~~~
-yaml
+services:
   radarr:
     image: mdhiggins/radarr-sma
     container_name: radarr
