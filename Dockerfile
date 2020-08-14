@@ -1,7 +1,5 @@
-ARG ffmpeg_tag=snapshot-vaapi
-ARG radarr_tag=latest
-FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
-FROM linuxserver/radarr:${radarr_tag}
+FROM linuxserver/radarr:latest
+FROM jrottenberg/ffmpeg:snapshot-vaapi as ffmpeg
 LABEL maintainer="eikowagenknecht <eiko.wagenknecht@web.de>"
 
 # Add files from ffmpeg
