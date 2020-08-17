@@ -8,3 +8,6 @@ mkdir -p \
 chown abc:abc \
 	/blackhole
 
+# hw accelleration permission
+chmod 777 /dev/dri/card0
+chmod 777 /dev/dri/renderD128
