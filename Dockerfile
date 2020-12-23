@@ -1,4 +1,4 @@
-ARG ffmpeg_tag=4.2-vaapi
+ARG ffmpeg_tag=4.3-vaapi1804
 ARG radarr_tag=latest
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM linuxserver/radarr:${radarr_tag}
