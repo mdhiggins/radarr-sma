@@ -3,10 +3,10 @@ name: ci
 on:
   push:
     branches:
-      - 'master'
+      - 'nightly'
 
 env:
-  tag: latest
+  tag: nightly
   project: radarr-sma
 
 jobs:
