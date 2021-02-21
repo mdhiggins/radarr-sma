@@ -5,6 +5,7 @@ ENV SMA_PATH /usr/local/sma
 ENV SMA_RS Radarr
 ENV SMA_UPDATE false
 ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armhf-static.tar.xz
+ENV PATH=$HOME/.cargo/bin:$PATH
 
 # get python3 and git, and install python libraries
 RUN \
