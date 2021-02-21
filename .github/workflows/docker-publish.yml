@@ -43,6 +43,10 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v2
+        run: |
+          # workaround https://github.com/uraimo/run-on-arch-action/issues/9
+          mkdir ~/.cargo
+          mount -t tmpfs -o size=2048m tmpfs ~/.cargo
         with:
           context: .
           file: ./${{ matrix.dockerfile }}
