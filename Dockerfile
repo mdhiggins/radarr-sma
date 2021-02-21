@@ -24,7 +24,8 @@ RUN \
   python3 -m virtualenv ${SMA_PATH}/venv && \
   ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
 # ffmpeg
-  wget -S -w 5m ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
+  export PROXY=$(curl http://pubproxy.com/api/proxy?limit=1&format=txt&http=true&country=US&type=http) && \
+  wget -e http_proxy=${PROXY} ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
   tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components 1 && \
   chgrp users /usr/local/bin/ffmpeg && \
   chgrp users /usr/local/bin/ffprobe && \
