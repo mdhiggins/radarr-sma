@@ -26,6 +26,12 @@ jobs:
             platform: arm64
     steps:
       -
+        name: Workaround
+        run: |
+          # workaround https://github.com/uraimo/run-on-arch-action/issues/9
+          mkdir ~/.cargo
+          mount -t tmpfs -o size=2048m tmpfs ~/.cargo
+      -
         name: Checkout
         uses: actions/checkout@v2
       -
@@ -40,12 +46,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: Workaround
-        run: |
-          # workaround https://github.com/uraimo/run-on-arch-action/issues/9
-          mkdir ~/.cargo
-          mount -t tmpfs -o size=2048m tmpfs ~/.cargo
       -
         name: Build and push
         uses: docker/build-push-action@v2
