@@ -8,6 +8,8 @@ ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armh
 
 # get python3 and git, and install python libraries
 RUN \
+  mkdir ~/.cargo && \
+  mount -t tmpfs -o size=2048m tmpfs ~/.cargo && \
   apt-get update && \
   apt-get install -y \
     git \
@@ -27,8 +29,6 @@ RUN \
   python3 -m pip install --user --upgrade pip && \
   python3 -m pip install --user virtualenv && \
   python3 -m virtualenv ${SMA_PATH}/venv && \
-  ${SMA_PATH}/venv/bin/pip install --upgrade pip && \
-  ${SMA_PATH}/venv/bin/pip install install cryptography --no-binary cryptography && \
   ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
