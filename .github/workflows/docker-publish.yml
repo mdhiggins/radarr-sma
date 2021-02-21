@@ -26,11 +26,6 @@ jobs:
             platform: arm64
     steps:
       -
-        name: Workaround
-        run: |
-          # workaround https://github.com/uraimo/run-on-arch-action/issues/9
-          mount -t tmpfs -o size=2048m tmpfs ~/.cargo
-      -
         name: Checkout
         uses: actions/checkout@v2
       -

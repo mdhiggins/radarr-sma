@@ -8,6 +8,8 @@ ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armh
 
 # get python3 and git, and install python libraries
 RUN \
+  mkdir /usr/local/cargo && \
+  sudo mount -t tmpfs -o size=2048m tmpfs /usr/local/cargo && \
   apt-get update && \
   apt-get install -y \
     git \
