@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'nightly'
+  schedule:
+    - cron:  '0 0 * * *'
 
 env:
   tag: nightly
