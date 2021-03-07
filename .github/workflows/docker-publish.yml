@@ -5,7 +5,7 @@ on:
     branches:
       - 'nightly'
   schedule:
-    - cron:  '0 2 * * *'
+    - cron:  '0 3 * * *'
 
 env:
   tag: nightly
