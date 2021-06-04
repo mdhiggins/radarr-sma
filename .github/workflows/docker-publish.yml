@@ -3,12 +3,12 @@ name: Docker Publish
 on:
   push:
     branches:
-      - 'nightly'
+      - 'develop'
   schedule:
     - cron:  '0 5 * * *'
 
 env:
-  tag: nightly
+  tag: develop
   project: radarr-sma
 
 jobs:
