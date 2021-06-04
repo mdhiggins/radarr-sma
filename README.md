@@ -6,8 +6,9 @@ Docker container for Radarr that includes all FFMPEG and python requirements to 
 |Tag|Description|
 |---|---|
 |latest|Stable release from Radarr with precompiled FFMPEG binaries|
-|build|Stable release from Radarr with FFMPEG compiled from jrottenberg/ffmpeg|
+|develop|Develop release from Radarr with precompiled FFMPEG binaries|
 |nightly|Nightly release from Radarr with precompiled FFMPEG binaries|
+|build|Stable release from Radarr with FFMPEG compiled from jrottenberg/ffmpeg|
 
 ## Usage
 
