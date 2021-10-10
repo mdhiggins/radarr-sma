@@ -1,5 +1,6 @@
 ARG ffmpeg_tag=4.2-ubuntu
 ARG radarr_tag=latest
+ARG extra_packages
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM linuxserver/radarr:${radarr_tag}
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
@@ -19,9 +20,7 @@ RUN \
     wget \
     python3 \
     python3-pip \
-    libnppig10 \
-    libnppicc10 \
-    libnppidei10 && \
+    ${extra_packages} && \
 # make directory
   mkdir ${SMA_PATH} && \
 # download repo
