@@ -97,5 +97,5 @@ services:
     build:
       context: https://github.com/mdhiggins/radarr-sma.git#build
       args:
-        - ffmpeg_tag=4.2-vaapi
+        ffmpeg_tag: 4.4-vaapi2004
 ~~~
