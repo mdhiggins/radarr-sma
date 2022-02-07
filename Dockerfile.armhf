@@ -13,7 +13,7 @@ RUN \
     git \
     wget \
     python3 \
-    python3-pip && \
+    py3-pip && \
 # make directory
   mkdir ${SMA_PATH} && \
 # download repo
