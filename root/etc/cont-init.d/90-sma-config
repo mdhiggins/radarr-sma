@@ -51,7 +51,9 @@ if [[ -f "${SMA_PATH}/manual.py" ]]; then
     fi
 else
     # initial download
-    echo "[90-sma-config] Pulling SMA from github master"
+    echo "[90-sma-config] Init SMA from github master"
+    git -C ${SMA_PATH} init --quiet
+    git -C ${SMA_PATH} remote add origin https://github.com/mdhiggins/sickbeard_mp4_automator.git
     git -C ${SMA_PATH} pull origin master --quiet
 fi
 
