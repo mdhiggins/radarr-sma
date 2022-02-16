@@ -42,6 +42,19 @@ elif [ -f /sbin/apk ]; then
     fi
 fi
 
+if [[ -f "${SMA_PATH}/manual.py" ]]; then
+    # update from git
+    if [[ "${SMA_UPDATE}" == "true" ]]
+    then
+        echo "[90-sma-config] Updating SMA from github master"
+        git -C ${SMA_PATH} pull origin master --quiet
+    fi
+else
+    # initial download
+    echo "[90-sma-config] Pulling SMA from github master"
+    git -C ${SMA_PATH} pull origin master --quiet
+fi
+
 # check virtual python environment
 if [[ -f "${SMA_PATH}/venv/bin/python3" ]]; then
     :
@@ -57,13 +70,6 @@ else
         -r ${SMA_PATH}/setup/requirements-deluge.txt \
         -r ${SMA_PATH}/setup/requirements-qbittorrent.txt > /dev/null
     fi
-fi
-
-# update from git
-if [[ "${SMA_UPDATE}" == "true" ]]
-then
-    echo "[90-sma-config] Pulling SMA from github master"
-    git -C ${SMA_PATH} pull origin master --quiet
 fi
 
 # ffmpeg
