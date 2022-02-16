@@ -29,7 +29,7 @@ elif [ -f /sbin/apk ]; then
     apk update > /dev/null
     apk add --no-cache \
         wget \
-        xz-utils \
+        xz \
         python3 \
         py3-pip \
         git > /dev/null
