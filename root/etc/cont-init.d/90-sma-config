@@ -17,6 +17,13 @@ if [ -f /usr/bin/apt ]; then
         python3-pymediainfo \
         python3-venv \
         git > /dev/null
+    if [[ "${SMA_HWACCEL}" == "true" ]]; then
+        echo "[90-sma-config] Installing additional hardware acceleration packages"
+        apt-get install --no-install-recommends -y -qq \
+            libva-drm2 \
+            libva \
+            i965-va-driver > /dev/null
+    fi
 elif [ -f /sbin/apk ]; then
     # Alpine
     apk update > /dev/null
@@ -27,6 +34,12 @@ elif [ -f /sbin/apk ]; then
         py3-pip \
         git > /dev/null
     apk add --no-cache py3-pymediainfo --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community > /dev/null
+    if [[ "${SMA_HWACCEL}" == "true" ]]; then
+        echo "[90-sma-config] Installing additional hardware acceleration packages"
+        apk add --no-cache \
+            libva \
+            libva-intel-driver > /dev/null
+    fi
 fi
 
 # check virtual python environment
