@@ -5,6 +5,7 @@ ENV SMA_PATH /usr/local/sma
 ENV SMA_RS Radarr
 ENV SMA_UPDATE false
 ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+ENV SMA_USE_REPO true
 
 # get python3 and git, and install python libraries
 RUN \
