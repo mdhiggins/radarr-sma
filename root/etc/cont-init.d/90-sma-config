@@ -5,6 +5,10 @@ if [[ -z "${SMA_PATH}" ]]; then
     export SMA_PATH="/usr/local/sma"
 fi
 
+if [[ -z "${SMA_STRIP_COMPONENTS}" ]]; then
+    export SMA_STRIP_COMPONENTS=1
+fi
+
 if [ -f /usr/bin/apt ]; then
     ## Ubuntu
     export DEBIAN_FRONTEND="noninteractive"
@@ -102,7 +106,7 @@ else
     fi
     echo "[90-sma-config] Downloading and installing FFMpeg"
     wget -q ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz
-    tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components 1
+    tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components ${SMA_STRIP_COMPONENTS}
     chown abc:abc /usr/local/bin/ffmpeg
     chown abc:abc /usr/local/bin/ffprobe
     chmod g+x /usr/local/bin/ffmpeg
