@@ -103,10 +103,11 @@ else
         export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-$architecture-static.tar.xz"
         ;;
     esac
+    echo "[90-sma-config] Set FFMPEG URL to ${SMA_FFMPEG_URL}"
     fi
-    echo "[90-sma-config] Downloading and installing FFMpeg"
+    echo "[90-sma-config] Downloading and installing FFMpeg from ${SMA_FFMPEG_URL}"
     wget -q ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz
-    tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components ${SMA_STRIP_COMPONENTS}
+    tar --exclude='*.html' --exclude='*.txt' -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components ${SMA_STRIP_COMPONENTS}
     chown abc:abc /usr/local/bin/ffmpeg
     chown abc:abc /usr/local/bin/ffprobe
     chmod g+x /usr/local/bin/ffmpeg
