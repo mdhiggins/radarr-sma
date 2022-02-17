@@ -2,7 +2,7 @@ ARG ffmpeg_source=jrottenberg/ffmpeg
 ARG ffmpeg_tag=4.4-ubuntu
 ARG radarr_tag=latest
 ARG extra_packages
-FROM {ffmpeg_source}:${ffmpeg_tag} as ffmpeg
+FROM ${ffmpeg_source}:${ffmpeg_tag} as ffmpeg
 FROM lscr.io/linuxserver/radarr:${radarr_tag}
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
