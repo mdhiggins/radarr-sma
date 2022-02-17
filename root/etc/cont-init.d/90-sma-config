@@ -42,7 +42,12 @@ elif [ -f /sbin/apk ]; then
             libva \
             libgomp \
             vidstab \
+            ca-certificates \
             libva-intel-driver > /dev/null
+    fi
+    if [[ "${SMA_USE_REPO}" == "true" ]]; then
+        apk add --no-cache \
+            ffmpeg > /dev/null
     fi
 fi
 
@@ -79,7 +84,7 @@ else
 fi
 
 # ffmpeg
-if [[ -f "/usr/local/bin/ffmpeg" ]]
+if [[ $(which ffmpeg) ]]
 then
     :
 else
