@@ -8,6 +8,7 @@ LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 # Add files from ffmpeg
 COPY --from=ffmpeg /usr/local/ /usr/local/
+COPY --from=ffmpeg /build /
 
 ENV SMA_PATH /usr/local/sma
 ENV SMA_RS Radarr
