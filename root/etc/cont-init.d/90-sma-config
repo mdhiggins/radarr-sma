@@ -36,6 +36,8 @@ elif [ -f /sbin/apk ]; then
     if [[ "${SMA_HWACCEL}" == "true" ]]; then
         apk add --no-cache \
             libva \
+            libgomp \
+            vidstab \
             libva-intel-driver > /dev/null
     fi
 fi
