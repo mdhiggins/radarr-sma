@@ -3,12 +3,16 @@ ARG ffmpeg_tag=4.4-ubuntu
 ARG radarr_tag=latest
 ARG extra_packages
 FROM ${ffmpeg_source}:${ffmpeg_tag} as ffmpeg
+
+RUN \
+  mkdir -p /build
+
 FROM lscr.io/linuxserver/radarr:${radarr_tag}
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 # Add files from ffmpeg
 COPY --from=ffmpeg /usr/local/ /usr/local/
-COPY --from=ffmpeg /build* /
+COPY --from=ffmpeg /build /
 
 ENV SMA_PATH /usr/local/sma
 ENV SMA_RS Radarr
