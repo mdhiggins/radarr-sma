@@ -34,7 +34,7 @@ RUN \
     rm -rf \
       /tmp/* \
       /var/lib/apt/lists/* \
-      /var/tmp/*; && \
+      /var/tmp/* && \
   elif [ -f /sbin/apk ]; then \
     apk update && \
     apk add --no-cache \
@@ -46,8 +46,8 @@ RUN \
     apk del --purge && \
     rm -rf \
       /root/.cache \
-      /tmp/*; && \
-  fi \
+      /tmp/* && \
+  fi && \
 # make directory
   mkdir ${SMA_PATH} && \
   git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git ${SMA_PATH} && \
