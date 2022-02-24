@@ -34,7 +34,7 @@ RUN \
     rm -rf \
       /tmp/* \
       /var/lib/apt/lists/* \
-      /var/tmp/*; \
+      /var/tmp/*; && \
   elif [ -f /sbin/apk ]; then \
     apk update && \
     apk add --no-cache \
@@ -46,7 +46,7 @@ RUN \
     apk del --purge && \
     rm -rf \
       /root/.cache \
-      /tmp/*; \
+      /tmp/*; && \
   fi \
 # make directory
   mkdir ${SMA_PATH} && \
