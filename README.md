@@ -91,6 +91,7 @@ Using the `build` tag leverages mulit-stage docker builds to generate FFMPEG com
 |---|---|---|
 |ffmpeg_tag|latest|Set tag to correspond to jrottenberg/ffmpeg:tag|
 |radarr_tag|latest|Set tag to correspond to linuxserver/radarr:tag|
+|extra_packages||Set additional packages/dependencies that might need to be installed via apt-get or apk, separated by spaces|
 
 ### VAAPI docker-compose sample
 ~~~yml
