@@ -41,7 +41,8 @@ RUN \
       git \
       wget \
       python3 \
-      py3-pip && \
+      py3-pip \
+      ${extra_packages} && \
 # cleanup
     apk del --purge && \
     rm -rf \
