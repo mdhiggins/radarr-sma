@@ -27,6 +27,10 @@ if [ -f /usr/bin/apt ]; then
             libva \
             i965-va-driver > /dev/null
     fi
+    if [[ "${SMA_USE_REPO}" == "true" ]]; then
+        apt-get install --no-install-recommends -y -qq \
+            ffmpeg > /dev/null
+    fi
 elif [ -f /sbin/apk ]; then
     # Alpine
     apk update > /dev/null
