@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - 'nightly'
-  schedule:
-    - cron:  '0 5 * * *'
+  workflow_dispatch:
 
 env:
   tag: nightly
