@@ -6,6 +6,7 @@ on:
       - 'develop'
   schedule:
     - cron:  '0 5 * * *'
+  workflow_dispatch:
 
 env:
   tag: develop
