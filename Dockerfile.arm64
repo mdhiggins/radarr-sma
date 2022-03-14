@@ -1,4 +1,4 @@
-FROM lscr.io/linuxserver/radarr
+FROM ghcr.io/linuxserver/radarr
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH /usr/local/sma
