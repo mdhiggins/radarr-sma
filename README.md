@@ -111,7 +111,7 @@ For the newer Linuxserver Radarr builds based on mono the jrottenberg FFMpeg bui
 
 ~~~yml
 services:
-  sonarr:
+  radarr:
     image: mdhiggins/radarr-sma
     container_name: radarr
     volumes:
