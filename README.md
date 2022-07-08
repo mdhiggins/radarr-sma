@@ -60,11 +60,14 @@ services:
 |Parameter|Value|
 |---|---|
 |On Grab| No|
-|On Download| Yes|
+|On Import| Yes|
 |On Upgrade| Yes|
 |On Rename| No|
+|On Movie Delete| No|
+|On Movie File Delete| No|
+|On Health Issue| No|
+|On Application Update| No|
 |Path|`/usr/local/sma/postRadarr.sh`|
-|Arg||
 
 ## Logs
 
