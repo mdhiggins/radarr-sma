@@ -45,9 +45,8 @@ services:
  - port
  - ssl
 
-### FFMPEG Binaries
-- `/usr/local/bin/ffmpeg`
-- `/usr/local/bin/ffprobe`
+### Python Environment
+The script installs all dependencies in a virtual environment, not the container/system level Python environment. In order to use the Python environment with the dependencies installed, please execute using `/usr/local/sma/venv/bin/python3`. Use this same Python executable if using manual.py
 
 ## Configuring Radarr
 
@@ -68,6 +67,8 @@ services:
 |On Health Issue| No|
 |On Application Update| No|
 |Path|`/usr/local/sma/postRadarr.sh`|
+
+**Make sure you're using the .sh file, no the .py file, the .sh file points to the appropriate virtual environment**
 
 ## Logs
 
