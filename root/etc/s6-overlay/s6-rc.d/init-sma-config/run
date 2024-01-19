@@ -100,7 +100,7 @@ else
 fi
 
 # ffmpeg
-if [[ -n "${SMA_FFMPEG_PATH}" ]] && [[ -n "${SMA_FFPROBE_PATH}" ]]; then
+if [[ -f "${SMA_FFMPEG_PATH}" ]] && [[ -f "${SMA_FFPROBE_PATH}" ]]; then
     :
 else
     # check ffmpeg URL
@@ -127,11 +127,22 @@ else
     fi
     echo "[90-sma-config] Downloading and installing FFMpeg from ${SMA_FFMPEG_URL}"
     wget -q ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz
-    tar --exclude='*.html' --exclude='*.txt' -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components ${SMA_STRIP_COMPONENTS}
-    chown abc:abc /usr/local/bin/ffmpeg
-    chown abc:abc /usr/local/bin/ffprobe
-    chmod g+x /usr/local/bin/ffmpeg
-    chmod g+x /usr/local/bin/ffprobe
+    if [[ "${SMA_FFMPEG_PATH}" == "ffmpeg" ]] && [[ "${SMA_FFPROBE_PATH}" == "ffprobe" ]] ; then
+        tar --exclude='*.html' --exclude='*.txt' -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components ${SMA_STRIP_COMPONENTS}
+        chown abc:abc /usr/local/bin/ffmpeg
+        chown abc:abc /usr/local/bin/ffprobe
+        chmod g+x /usr/local/bin/ffmpeg
+        chmod g+x /usr/local/bin/ffprobe
+    else
+        mkdir /tmp/ffmpeg
+        tar --exclude='*.html' --exclude='*.txt' -xJf /tmp/ffmpeg.tar.xz -C /tmp/ffmpeg --strip-components ${SMA_STRIP_COMPONENTS}
+        mv /tmp/ffmpeg/ffmpeg "${SMA_FFMPEG_PATH}"
+        mv /tmp/ffmpeg/ffprobe "${SMA_FFPROBE_PATH}"
+        chown abc:abc "${SMA_FFMPEG_PATH}"
+        chown abc:abc "${SMA_FFPROBE_PATH}"
+        chmod g+x "${SMA_FFMPEG_PATH}"
+        chmod g+x "${SMA_FFPROBE_PATH}"
+    fi
     rm -rf /tmp/*
 fi
 
