@@ -18,7 +18,7 @@ if [ -f /usr/bin/apt ]; then
         xz-utils \
         python3 \
         python3-pip \
-        python3-venv \
+        python3-virutalenv \
         fontconfig \
         fonts-dejavu \
         git \
@@ -100,9 +100,7 @@ else
 fi
 
 # ffmpeg
-if [[ $(which ffmpeg) ]]; then
-    :
-elif [[ -n "${SMA_FFMPEG_PATH}" ]] && [[ -n "${SMA_FFPROBE_PATH}" ]]; then
+if [[ -n "${SMA_FFMPEG_PATH}" ]] && [[ -n "${SMA_FFPROBE_PATH}" ]]; then
     :
 else
     # check ffmpeg URL
