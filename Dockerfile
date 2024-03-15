@@ -1,6 +1,6 @@
 ARG ffmpeg_source=jrottenberg/ffmpeg
 ARG ffmpeg_tag=4.4-ubuntu
-ARG radarr_tag=latest
+ARG radarr_tag=4.1.0.6175-ls140
 ARG extra_packages
 FROM ${ffmpeg_source}:${ffmpeg_tag} as ffmpeg
 
