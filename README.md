@@ -12,9 +12,6 @@ Docker container for Radarr that includes all FFMPEG and python requirements to 
 
 ## Usage
 
-### Recent update
-As of 3/9/2020 the containers were overhauled and the location of the script was changed from `/usr/local/bin/sma/sickbeard_mp4_automator` to `/usr/local/sma`. The autoProcess mount point has been modified as well to be more docker friendly in a `/usr/local/sma/config` directory. Please review and update accordingly.
-
 ### docker-compose
 ~~~yml
 services:
